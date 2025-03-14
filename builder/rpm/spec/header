@@ -5,7 +5,7 @@ Name: my-nginx
 Summary: Nginx Based on OpenResty
 
 # The version of your package
-Version: 1.0%{?dist}
+Version: __VERSION__
 
 # The release number of your package
 Release: 1

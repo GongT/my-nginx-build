@@ -98,6 +98,9 @@ cd /builder/rpm
 mkdir -p root/var/log/nginx
 mkdir -p root/etc/nginx/{stream.d,vhost.d,rtmp.d}
 
+VER=$(/builder/rpm/root/usr/sbin/nginx -v 2>&1 | grep -oE '[0-9.]+$')
+sed -i "s/__VERSION__/${VER}/g" spec/header
+
 togo file exclude etc run usr/lib/systemd/system usr/sbin var/log
 
 togo build package
