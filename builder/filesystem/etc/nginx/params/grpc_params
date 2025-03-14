@@ -1,0 +1,12 @@
+grpc_buffer_size 1m;
+grpc_set_header X-H2                 $rproxy_http2;
+grpc_set_header X-H3                 $rproxy_http3;
+grpc_set_header X-Real-IP            $realip_remote_addr;
+grpc_set_header X-Forwarded-For      $proxy_add_x_forwarded_for;
+grpc_set_header X-Remote-Port        $realip_remote_port;
+grpc_set_header X-Forwarded-Proto    $rproxy_protocol;
+grpc_set_header X-Server-Addr        $rproxy_server_addr;
+grpc_set_header X-Server-Port        $rproxy_server_port;
+grpc_set_header X-Compressing        "yes";
+grpc_set_header Early-Data           $ssl_early_data;
+grpc_set_header Host                 $domain;

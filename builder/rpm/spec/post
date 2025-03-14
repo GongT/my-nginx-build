@@ -1,0 +1,13 @@
+%post
+
+if $(id nginx &>/dev/null); then
+	usermod -s /sbin/nologin nginx
+else
+	useradd nginx --uid 991 --gid 988 --no-create-home --shell /sbin/nologin
+else
+
+if [[ ! -f /etc/nginx/selfsigned.crt ]] && command -v openssl &>/dev/null; then
+	openssl req -quiet -x509 -nodes -days 365 -newkey rsa:2048 -batch \
+		-keyout "/etc/nginx/selfsigned.key" \
+		-out "/etc/nginx/selfsigned.crt"
+fi

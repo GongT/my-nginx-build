@@ -1,0 +1,31 @@
+[Unit]
+Description=The NGINX HTTP and reverse proxy server
+After=network-online.target remote-fs.target nss-lookup.target
+FailureAction=exit
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=exec
+ExecStartPre=/usr/sbin/nginx -t
+ExecStart=/usr/sbin/nginx
+ExecReload=/usr/sbin/nginx -s reload
+TimeoutStopSec=5
+KillMode=mixed
+PrivateTmp=true
+KillSignal=SIGQUIT
+StandardInput=null
+StandardOutput=journal
+StandardError=journal
+
+ProtectSystem=full
+ProtectHome=read-only
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+
+LogsDirectory=nginx
+StateDirectory=nginx
+RuntimeDirectory=nginx
+ConfigurationDirectory=nginx

@@ -1,0 +1,5 @@
+ssl_session_cache shared:SSL-STREAM:10m;
+ssl_session_timeout 1440m;
+ssl_protocols SSLv2 SSLv3 TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+ssl_prefer_server_ciphers off;
+ssl_ciphers ALL:!aNULL:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
